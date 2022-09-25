@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+      <h1 class="display-4 fw-normal">Main page</h1>
+      {% if tasks %}
+            <p><h2>Current Tasks:</h2>
+            {% for el in tasks %}
+                  <div class="alert alert-warning mt-2">
+                        <h3>{{ el.title }}</h3>
+                        <p>{{ el.task }}</p>
+                        <a style="color:red"
+                           href="{% url 'delete' el.id %}">Delete task</a>
+                  </div>
+            {% endfor %}
+      {% else %}
+            <p><h3>We dont`t have tasks!</h3>
+      {% endif %}
+{% endblock %}
